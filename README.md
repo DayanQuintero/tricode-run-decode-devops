@@ -13,4 +13,4 @@ Juego arcade desarrollado en HTML, CSS y JavaScript.
 
 ## Autor
 
-Fede Escobar
+Fede EscobarFeature branch activa para mejoras visuales de Tricode
