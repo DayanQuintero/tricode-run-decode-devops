@@ -1,0 +1,50 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Infraestructura completa Tricode
+
+Resources:
+
+  TricodeVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+
+  TricodeSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref TricodeVPC
+      CidrBlock: 10.0.1.0/24
+
+  TricodeIGW:
+    Type: AWS::EC2::InternetGateway
+
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref TricodeVPC
+      InternetGatewayId: !Ref TricodeIGW
+
+  TricodeSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Permitir HTTP
+      VpcId: !Ref TricodeVPC
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 3000
+          ToPort: 3000
+          CidrIp: 0.0.0.0/0
+
+  TricodeInstance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      ImageId: ami-0c02fb55956c7d316
+      SubnetId: !Ref TricodeSubnet
+      SecurityGroupIds:
+        - !Ref TricodeSG
+      IamInstanceProfile: LabInstanceProfile
+
+  TricodeBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: tricode-bucket-devops

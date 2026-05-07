@@ -1,0 +1,26 @@
+{
+  "name": "juego",
+  "version": "1.0.0",
+  "description": "Juego arcade desarrollado en HTML, CSS y JavaScript.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FDX03/Juego.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/FDX03/Juego/issues"
+  },
+  "homepage": "https://github.com/FDX03/Juego#readme",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  }
+}
