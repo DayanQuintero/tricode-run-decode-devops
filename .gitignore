@@ -1,6 +1,0 @@
-node_modules/
-*.zip
-*.tar.gz
-backup.log
-.env
-.DS_Store
